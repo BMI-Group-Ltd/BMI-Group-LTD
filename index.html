@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BMI Group Ltd. — Real Estate Services</title>
+  <meta name="description" content="BMI Group Ltd. — Helping people buy, sell or rent properties in UAE and beyond." />
+  <meta name="author" content="Aaradhya Krishnan" />
+  <style>
+    /* ---------------------------------------------
+       BMI Group — Single-file responsive website
+       - Feel free to edit images and text
+       - Replace placeholders with real assets
+       --------------------------------------------- */
+
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#ffffff;
+      --muted:#94a3b8;
+      --accent:#06b6d4; /* teal */
+      --glass: rgba(255,255,255,0.06);
+      --radius:14px;
+      --maxw:1200px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071022 0%, #0b1220 60%);
+      color:var(--card);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .container{
+      width:calc(100% - 32px);
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:28px 16px;
+    }
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 0;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042028;font-size:18px;box-shadow:0 6px 18px rgba(7,16,26,0.6);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:10px;color:var(--card);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#042028;border:0}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0 48px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.03), transparent);
+      padding:28px;border-radius:20px;box-shadow:0 8px 30px rgba(2,6,23,0.6);
+    }
+    .kicker{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.6px}
+    .hero h2{font-size:32px;margin:8px 0 6px}
+    .hero p.lead{color:var(--muted);margin:0 0 18px}
+
+    .search{
+      display:flex;gap:8px;background:var(--glass);padding:8px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .search input{flex:1;padding:12px;border:0;background:transparent;color:var(--card);outline:none}
+    .search select{padding:10px;border-radius:10px;border:0;background:transparent;color:var(--card)}
+
+    /* Sidebar hero card */
+    .stats{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:18px;border-radius:12px}
+    .stat{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    .stat strong{font-size:18px}
+    .muted{color:var(--muted)}
+
+    /* Listings */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+
+    .card{background:linear-gradient(180deg,#071023 0%, #081428 100%);border-radius:14px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card .body{padding:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02)}
+
+    .price{font-weight:800;font-size:18px}
+    .meta{font-size:13px;color:var(--muted)}
+
+    /* About and contact */
+    .about{
+      display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:36px;align-items:start
+    }
+    .about p{color:var(--muted)}
+
+    .owner-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:14px}
+    .owner-photo{width:100%;height:220px;background:linear-gradient(135deg,#0ea5a4,#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#042028;font-weight:700}
+
+    /* Contact form */
+    form{display:grid;gap:10px}
+    input[type='text'],input[type='email'],textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--card);outline:none}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{margin-top:40px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Utility */
+    .flex{display:flex;align-items:center}
+    .space{flex:1}
+    .center{text-align:center}
+
+    @media (max-width:1024px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column;gap:12px;align-items:flex-start}
+      .logo{width:56px;height:56px}
+      .hero h2{font-size:26px}
+    }
+
+    /* subtle animations */
+    .fade-up{opacity:0;transform:translateY(8px);animation:fu .7s ease forwards}
+    @keyframes fu{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>BMI</div>
+        <div>
+          <h1>BMI Group Ltd.</h1>
+          <p>Real Estate — Buy • Sell • Rent</p>
+        </div>
+      </div>
+
+      <nav>
+        <div class="muted" style="font-size:13px">BMI Building, Bank Street, Bur Dubai — P.O. Box 45646</div>
+        <div class="space"></div>
+        <button class="btn">Listings</button>
+        <button class="btn">About</button>
+        <button class="btn primary">Contact</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card fade-up">
+        <div class="kicker">Trusted</div>
+        <h2>We find the right place for your next move.</h2>
+        <p class="lead">BMI Group connects buyers, sellers and tenants across residential and commercial properties. Professional, local knowledge — global outlook.</p>
+
+        <div class="search" role="search">
+          <input id="q" placeholder="Search by city, neighbourhood or property ID" />
+          <select id="type">
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+            <option value="sell">Sell</option>
+          </select>
+          <button class="btn primary" onclick="performSearch()">Search</button>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:14px;align-items:center">
+          <div class="muted">Contact</div>
+          <div class="chip">+91 97021 45591</div>
+          <div class="chip">aaradhyakrishnan23@gmail.com</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3 style="margin:6px 0">Featured Listings</h3>
+          <div class="grid" id="featured">
+            <!-- Listing cards injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <aside class="stats fade-up" style="animation-delay:.12s">
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+          <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#fef3c7,#fdba74);display:flex;align-items:center;justify-content:center;color:#422006;font-weight:800">A</div>
+          <div>
+            <strong>Aaradhya Krishnan</strong>
+            <div class="muted" style="font-size:12px">Shareholder — BMI Group Ltd.</div>
+          </div>
+        </div>
+
+        <div class="stat"><div class="muted">Properties listed</div><strong id="countListed">150+</strong></div>
+        <div class="stat"><div class="muted">Cities served</div><strong id="countCities">5+</strong></div>
+        <div class="stat"><div class="muted">Years operating</div><strong>10+</strong></div>
+
+        <div style="margin-top:12px">
+          <h4 style="margin:0 0 8px">Office</h4>
+          <div class="muted" style="font-size:13px">BMI Building (Near Sharaf DG Metro Station – Exit No. 1)<br/>Bank Street, Bur Dubai, Dubai, UAE<br/>P.O. Box: 45646</div>
+        </div>
+
+      </aside>
+    </section>
+
+    <!-- LISTINGS GRID (main) -->
+    <section>
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h3 style="margin:8px 0">Latest Listings</h3>
+        <div class="muted">Showing 9 results</div>
+      </div>
+
+      <div class="grid" id="listings">
+        <!-- JS will render cards here -->
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:18px">
+        <button class="btn" onclick="loadMore()">Load more</button>
+      </div>
+    </section>
+
+    <!-- ABOUT + CONTACT -->
+    <section class="about">
+      <div>
+        <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px">
+          <h3>About BMI Group Ltd.</h3>
+          <p>BMI Group helps people buy, sell, or rent properties such as houses, land, apartments, and commercial buildings. We act as a trusted link between property owners and buyers or tenants. Our team provides property valuation, marketing, negotiation and legal coordination so you get the best result with minimal stress.</p>
+
+          <h4 style="margin-top:12px">How we help</h4>
+          <ul class="muted" style="margin-top:8px">
+            <li>Market analysis & fair pricing</li>
+            <li>Professional photography & listing exposure</li>
+            <li>Tenant sourcing & lease coordination</li>
+            <li>Sales negotiation and post-sale support</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:14px">
+          <h3>Client Testimonials</h3>
+          <div class="card" style="padding:12px;margin-top:8px">
+            <p class="muted">"BMI Group found us the perfect office space within a week. Professional, warm and efficient."</p>
+            <div style="display:flex;gap:8px;margin-top:8px;align-items:center"><div class="owner-photo" style="width:40px;height:46px;border-radius:10px;">R</div><div style="font-size:13px">Ravi — Startup Founder</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="owner-card">
+          <div class="owner-photo" id="ownerPhoto"><img src="https://i.postimg.cc/wj0bsBKW/photo-2025-09-14-14-56-25.jpg"Aaradhya Krishnan" style="width:100%;height:100%;object-fit:cover;border-radius:10px">
+            -->
+          </div>
+
+          <h4 style="margin-top:12px">Aaradhya Krishnan</h4>
+          <div class="muted">Shareholder — BMI Group Ltd.</div>
+
+          <div style="margin-top:12px">
+            <strong>Contact</strong>
+            <div class="muted" style="margin-top:6px">Phone: +91 97021 45591<br/>Email: aaradhyakrishnan23@gmail.com</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <strong>Office Hours</strong>
+            <div class="muted">Mon — Fri: 9:00 — 18:00<br/>Sat: 10:00 — 14:00</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px">
+          <h4 style="margin:0 0 8px">Get in touch</h4>
+          <form onsubmit="sendMessage(event)">
+            <input type="text" id="name" placeholder="Your name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="text" id="subject" placeholder="Subject" />
+            <textarea id="message" placeholder="Message" required></textarea>
+            <button class="btn primary" type="submit">Send message</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted">© BMI Group Ltd. — P.O. Box 45646, Bur Dubai, Dubai</div>
+        <div class="space"></div>
+        <div class="muted"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple demo data — replace these with real listings from your database or CMS
+    const demoListings = [
+      {id: 'B-1001', title: 'Modern 2BHK Apartment — Bur Dubai', price: 'AED 750,000', area:'1100 sqft', beds:2, baths:2, img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=60'},
+      {id: 'B-1002', title: 'Luxury Villa with Pool — Jumeirah', price: 'AED 6,200,000', area:'4500 sqft', beds:5, baths:6, img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=60'},
+      {id: 'B-1003', title: 'Retail Space — Bank Street', price: 'AED 120,000 / year', area:'800 sqft', beds:0, baths:1, img: 'https://i.postimg.cc/50cdKtPx/download-23.jpg'},
+      {id: 'B-1004', title: 'Cozy Studio — Dubai Marina', price: 'AED 550,000', area:'420 sqft', beds:1, baths:1, img: 'https://i.postimg.cc/Znx9jnhg/Would-You-Live-Here-Dubai-s-Most-Instagrammable-Apartments.jpg'},
+      {id: 'B-1005', title: 'Office Suite — Bur Dubai', price: 'AED 220,000 / year', area:'1500 sqft', beds:0, baths:2, img: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=60'},
+      {id: 'B-1006', title: 'Plot of Land — Ras Al Khaimah', price: 'AED 2,100,000', area:'5000 sqft', beds:0, baths:0, img: 'https://i.postimg.cc/9MxK9tDN/Property-for-sale-in-UAE-Ras-Al-Khaimah.jpg'},
+      {id: 'B-1007', title: 'Penthouse — Palm Jumeirah', price: 'AED 9,800,000', area:'5200 sqft', beds:4, baths:5, img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=60'},
+      {id: 'B-1008', title: 'Family Home — Al Quoz', price: 'AED 1,450,000', area:'2000 sqft', beds:3, baths:3, img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=60'},
+      {id: 'B-1009', title: 'Warehouse — Jebel Ali', price: 'AED 700,000 / year', area:'15000 sqft', beds:0, baths:4, img: 'https://i.postimg.cc/BbP3QwmC/download-24.jpg'}
+    ];
+
+    function createCard(listing){
+      const el = document.createElement('div');
+      el.className = 'card fade-up';
+      el.innerHTML = `
+        <img src="${listing.img}" alt="${listing.title}" />
+        <div class="body">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div class="tags"><span class="chip">${listing.id}</span><span class="chip">${listing.area}</span></div>
+              <h4 style="margin:8px 0 6px">${listing.title}</h4>
+              <div class="meta">${listing.beds} beds • ${listing.baths} baths</div>
+            </div>
+            <div class="price">${listing.price}</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn" onclick="viewListing('${listing.id}')">View</button>
+            <button class="btn primary" onclick="contactAgent('${listing.id}')">Contact</button>
+          </div>
+        </div>
+      `;
+      return el;
+    }
+
+    function renderListings(){
+      const container = document.getElementById('listings');
+      container.innerHTML = '';
+      demoListings.slice(0,9).forEach(l=>container.appendChild(createCard(l)));
+
+      const featured = document.getElementById('featured');
+      featured.innerHTML = '';
+      demoListings.slice(0,3).forEach(l=>{
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.display='flex';card.style.gap='12px';card.style.alignItems='center';
+        card.innerHTML = `<img src="${l.img}" alt="${l.title}" style="width:96px;height:64px;object-fit:cover;border-radius:8px;margin-right:8px"/><div style="padding:6px"><strong style="display:block">${l.title}</strong><div class=\"muted\">${l.price}</div></div>`;
+        featured.appendChild(card);
+      });
+    }
+
+    function performSearch(){
+      const q = document.getElementById('q').value.toLowerCase();
+      const type = document.getElementById('type').value;
+      const results = demoListings.filter(l => l.title.toLowerCase().includes(q) || l.id.toLowerCase().includes(q));
+      const container = document.getElementById('listings');
+      container.innerHTML = '';
+      (results.length?results:demoListings.slice(0,9)).forEach(l=>container.appendChild(createCard(l)));
+      document.querySelector('section > div > .muted') && (document.querySelector('section > div > .muted').innerText = `Showing ${results.length||9} results`);
+    }
+
+    function viewListing(id){
+      alert('Open listing modal or detail page for ' + id + '. (Replace with real page)');
+    }
+    function contactAgent(id){
+      document.getElementById('name').focus();
+      alert('Pre-filling contact for ' + id + '. (Demo)');
+    }
+
+    function loadMore(){
+      alert('Load more listings — wire this to real API.');
+    }
+
+    function sendMessage(e){
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+      console.log('Contact form submit', payload);
+      alert('Thanks ' + payload.name + '! Your message has been received. We will contact you shortly.');
+      e.target.reset();
+    }
+
+    // Kick off
+    document.addEventListener('DOMContentLoaded', function(){
+      renderListings();
+      // update quick stats (demo values)
+      document.getElementById('countListed').innerText = demoListings.length;
+      document.getElementById('countCities').innerText = 5;
+
+      // Replace owner photo placeholder automatically if you add an <img> inside #ownerPhoto on CodePen
+      // Tip: in CodePen, upload an image and paste <img src="..." alt="Owner" style="width:100%;height:100%;object-fit:cover;border-radius:10px"> into the .owner-photo div
+    });
+  </script>
+</body>
+</html>
